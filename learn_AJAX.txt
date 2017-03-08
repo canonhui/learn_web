@@ -1,0 +1,81 @@
+AJAX: Asynchronous JavaScript And XML（异步JavaScript和XML）
+AJAX不是新的编程语言，而是一种使用现有标准的新方法
+AJAX允许在不重新加载整个页面的情况下，与服务区交换数据并更新部分网页
+
+========================AJAX XHR========================
+创建XHR对象：XHR-XMLHttpRequest是AJAX的基础，用于在后台与服务器交换数据
+	variable=new XMLHttpRequest(); //创建XHR对象
+	variable=new ActiveXObject("Microsoft.XMLHTTP"); //应对老板本IE(IE5 and IE6)
+	所以为保险起见：var xmlhttp;if(window.XMLHttpRequest){第一条} else{第二条}
+XHR向服务器发送请求：使用XHR的open()和send()方法：
+	xmlhttp.open("GET","url",true); //规定请求类型(GET or POST)，请求文件在服务器上的位置，和是否异步处理请求
+	xmlhttp.send(string); //将请求发送到服务器，string参数仅用于POST请求
+	GET or POST? 发送包含未知字符的用户输入时，POST比GET更稳定可靠
+	GET请求例子：xmlhttp.open("GET","demo_get.asp",true);xmlhttp.send(); //此情况可能得到的是缓存结果
+		xmlhttp.open("GET","demo_get.asp?t="+Math.random(),true); //这里想URL添加唯一的ID，可避免上述情况
+		xmlhttp.open("GET","demo_get.asp?fname=Bill&Lname=Gates",true); //向服务器发送一些简单信息
+	POST请求例子：xmlhttp.open("POST","demo_post.asp",true);xmlhttp.send();
+		使用setRequestHeader()添加HTTP头部后，可像HTML表单那样POST数据：
+			xmlhttp.open("POST","ajax_test.asp",true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("fname=Bill&lname=Gates");
+		setRequestHeader(header,value)：向请求添加http头，参数为头的名称和头的值
+	是否异步：XHR对象如果要用于AJAX，其open()方法async参数必须选true
+		很多在服务器执行的任务都相当费时，异步处理可在等待服务器响应时执行其他脚本，响应就绪后再对响应进行处理
+		当使用 async=true 时，需规定在响应处于 onreadystatechange 事件中的就绪状态时执行的函数：
+			xmlhttp.onreadystatechange=function()
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			xmlhttp.open("GET","test1.txt",true); xmlhttp.send();
+		async=false可在一些小型请求时使用。这时不需要编写onreadystatechange函数，把上面该函数中的语句放在send()后即可
+XHR服务器响应：使用XHR对象的responseText或responseXML属性：
+	responseText获得字符串形式的响应数据，响应数据类型是有服务器决定的？？？
+		document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	responseXML获得XML形式的响应数据
+		xmlDoc=xmlhttp.responseXML; //得到的是一个XML对象文件，不能显示其内容？？需要解析
+			x=xmlDoc.getElementByTagName("title"); //这个标签是收到的XML文档中的标签！！！
+			for(i=0;i<x.length;i++)
+				txt=txt+x[i].childNodes[0].nodeValue+"<br/>";
+XHR readyState：
+	XHR对象的三个重要属性：
+		readyState：存有XHR对象的状态信息，从0到4变化：	
+			0: 请求未初始化
+			1: 服务器连接已建立
+			2: 请求已接收
+			3: 请求处理中
+			4: 请求已完成，且响应已就绪
+		onreadystatechange事件：存储函数（或函数名）。每当readyState发生改变时，就会被触发，调用储存的函数
+		status属性：200："OK"; 404：为找到页面
+		当status=200且readyState=4时，表明响应已就绪。
+	使用callback函数：一种被以参数形式传递给另一个函数的函数
+		http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_onreadystatechange.asp
+		
+				
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

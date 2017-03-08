@@ -1,0 +1,52 @@
+JSON: JavaScript对象表示法(JavaScript Object Notation)
+JSON是轻量级的文本数据交换格式
+JSON是存储和交换文本信息的语法。类似XML，但比XML更小、更快、更易解析
+JSON独立于语言，具有自我描述性（人类可读）
+JSON使用JavaScript语法来描述数据对象，但是JSON仍然独立于语言和平台。JSON解析器和JSON库支持许多不同的编程语言
+JSON文本格式在语法上与创建JavaScript对象的代码相同
+由于这种相似性，无需解析器，JavaScript程序能够使用内建的 eval() 函数，用JSON数据来生成原生的JavaScript对象
+
+JSON语法：是JS语法的子集
+	数据在名称/值对中："firstname":"Johnson". 等价于JS语句：firstname="Johnson";
+	JSON的值的类型：数字（整数或浮点），字符串（双引号中），逻辑值（true或false），数组（方括号中），对象（花括号中），null
+	JSON对象：包含多个名称/值对：{"fname":"John","lname":"son"}
+		不同名称/值对之间用逗号分隔
+	JSON数组：数组可包含多个对象：
+		{"hui":[{"name":"xiaohuihui","age":23},{"name":"dahuihui","age":24}]}
+		这里对象"hui"是包含两个对象的数组，每个对象有"name"和"age"字段
+	在JS中，可直接创建JSON对象并赋值：
+		var hui=[{"name":"xiaohuihui","age":23},{"name":"dahuihui","age":24}];
+		可以这样访问创建的JSON对象数组：hui[1].age, 返回24
+		还可以直接修改数据：hui[0].age=22
+	JSON文件：扩展名：.json，文本的MIME类型是"application/json"
+JSON使用：把JSON文本转换为JS对象
+	JSON 最常见的用法之一，是从服务器上读取JSON数据（作为文件或作为 HttpRequest），将JSON数据转换为JS对象，然后在网页中使用该数据
+	使用eval()函数可直接将JSON文本转换为JS对象。
+	eval()使用JavaScript编译器。必须把被解析的JSON文本包含在括号中才能避免语法错误：
+		var JSObj=eval("(" + txt + ")");
+	虽然 eval() 的功能非常强大，但在实际使用中用到它的情况并不多（所以实际中是怎么解析JSON文本的）？用JSON解析器。	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

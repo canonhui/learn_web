@@ -1,0 +1,290 @@
+JavaScript被用来改进网页设计、验证表单、检测浏览器、创建cookies以及更多应用！！
+ECMA-262 是 JavaScript 标准的官方名称
+JavaScript是所有现代浏览器以及HTML5中的默认脚本语言
+对于因特网和视窗操作系统，JavaScript 都意味着未来
+JavaScript 是脚本语言。浏览器会在读取代码时，逐行地执行脚本代码。而对于传统编程来说，会在执行前对所有代码进行编译。
+	原来这就是脚本语言与传统编程语言的区别啊
+
+JS实现：
+	JS使用：HTML中的JS脚本必须位于<script>和</script>标签之间；脚本可位于<body>和<head>元素中
+	JavaScript语言，会在页面加载时执行
+	JavaScript函数，可在某个事件发生时被调用
+	通常把函数放入 <head> 部分中，或者放在<body>部分中的最后面。这样就可以把它们安置到同一处位置，不会干扰页面的内容。
+	也可以把脚本保存到外部文件中，扩展名js。外部文件通常包含被多个网页使用的代码
+		应用外部脚本，在<head>或<body>中使用：
+			<script src="myScript.js"></script>
+	外部脚本不能包含<script>标签
+JS输出：
+	操作HTML元素：使用 document.getElementById(id)方法来访问某个元素，并可改变元素内容：
+		document.getElementById(id).innerHTML="blablabla"; （innerHTML代表元素内容）
+	写到文档输出：document.write("<p>first JS</p>");
+	警告：仅使用document.write向文档输出写内容；若在文档加载完后执行该方法，则整个HTML页面将被覆盖，即原来内容全部消失
+JS语句：
+	分号：分隔JavaScript语句，不是必须的！！！
+	代码块：就是由花括号括起来的所有语句咯
+	JavaScript对大小写敏感
+	对代码块进行折行：在文本字符串中使用 "\"，记住，只能在文本字符串中！！！
+		document.write("hello \               document.write \
+		world")      可行                     ("hello world")       不可行
+JS注释：单行  "//"
+	多行： /*多行注释*/
+JS变量：储存信息的容器
+	必须以字母开头，当然也能以"$"和"_"开头，但不推荐
+	创建变量，通常也称为声明变量，用  var  关键字：var carname = "Volvo"
+	一个好的编程习惯是，在代码开始处，统一对需要的变量进行声明。
+	Value=undefined，即当一个变量被声明但没被赋值时，其值就是undefined
+JS数据类型：字符串，数字，布尔，数组，对象，Null，Undefined
+	JS拥有动态类型，这意味着同一变量可被声明为不同的类型
+	JS字符串：使用单引号或双引号都行
+		转移字符： "\"
+	JS数字：只有一种数字类型，小数点可带可不带
+		用科学（指数）计数法表示极大或极小数：var x=12e5; var y=12e-5
+	JS布尔：两个值为 true 和 false。谨记：全为小写
+	JS数组：声明：var nums = new Array(1, 2, 3);  //condensed array
+		也可以这样：var nums = [1, 2, 3]  //literal array
+		数组下标以 0 开始
+	JS对象：由花括号分隔。对象的属性以名称和值对的形式 (name : value) 来定义。属性由逗号分隔：
+		var person = {name: "Huihui", id: 4059};
+		对象寻址方式：person.name; 或 person{"id"} //单引号也行
+	undefined和null：
+		undefined表示变量不含有值，注意是小写
+		可通过将变量值设为null来清空变量：cars=null; perso=null //注意null是小写
+	声明变量类型：使用“new”关键字：
+		var car=new String, x=new Number, y=new Boolean, cars=new Array, person=new Object;
+	JavaScript 变量均为对象。当您声明一个变量时，就创建了一个新的对象。
+JS对象：对象是拥有属性和方法的数据
+	属性是对象相关的值，方法是能够在对象上执行的动作，这两者常常被称为对象的成员
+	访问属性：如上；访问方法：objectName.methodName();
+	也可以这样为自定义对象添加属性：
+		var person = new Object(); person.name = "XiaoHuihui";
+	还可以向已存在的对象添加属性和方法。。。（和Python差不多吧，都忘了唉！）
+JS函数：由事件驱动或被调用时执行
+	语法：function functionName(){...} //function关键字是全小写！！！
+	带参数的函数：定义函数的时候，只需以变量名传递这些参数，不用指明变量类型（这就是动态类型的好处吧）
+	函数返回值：用 return 语句
+	JS局部变量：在JavaScript函数内部声明的变量(var)，只能在函数内部访问它
+	JS全局变量：在函数外声明的变量，网页上所有脚本和函数都可以访问它
+		注：向一个为声明的变量赋值，该变量会被自动作为全局变量声明，即使是在函数内部执行的：car="Volvo"
+	JS变量生命期：从被声明时开始，局部变量在函数运行以后被删除，全局变量在网页关闭后被删除
+JS运算符：
+	算术运算符和C一毛一样（也有++和--）
+	用于字符串的 + 运算符：可连接多个字符串：txt3=txt1+txt2; 或者：txt3=txt1+" "+txt2
+	若把数字和字符串作加法，则数字会被强制转化为字符串
+JS比较和逻辑运算符：用于测试true or false
+	比较运算符：除了那些普通的==, !=, >, <外，还多了个"==="：全等于的妖艳贱货，它的意思是必须值和类型同时相等
+	逻辑运算符：&&, ||, !
+	条件运算符：C中的?运算符：varName=(condition)?value1:value2; //条件成立，变量值取value1，否则取2
+JS if...else: 和C一毛一样的语法
+JS switch语句：
+	switch(n){
+		case 1:blabla;break;
+		case 2:blabla;break;
+		default:blabla;}     //貌似也跟C一毛一样吧
+JS for：
+	for循环：和C的语法一样
+		语句1可以初始化任意多个值；
+		三个语句都是可选的（其实把它和while循环类比一下，就很好理解这些特殊格式了）
+	for/in循环：用于便利对象的属性：for (x in person)  //注意 in 在括号里
+JS while：和C一毛一样的咯
+JS break和continue：当然也是一毛一样的咯
+	JS标签：在语句前面添加："labelName:"。使用break和continue语句跳到某个标签处：
+		break labelName; continue labelName;
+	continue永远只能用在循环中（不管有无标签）
+	无标签break只能用在循环或switch中；有标签break可用于跳出任何JS代码块
+	break和continue区别：都在循环中引用标签，标签指向循环的开头，
+		break到标签处（循环头）后会跳过循环，而continue则会继续执行为完成的循环
+	过度使用break、continue和标签会给调试带来不便
+JS错误：throw, try and catch
+	JavaScript抛出错误：JavaScript引擎停止，并生成一个错误消息
+	JavaScript测试和捕捉：
+		try语句定义错误测试的代码块，catch定义当try语句测试的错误发生时，所执行的代码块
+		两者总是成对出现try{...} catch{...}
+		在catch语句里使用 "err.message" 来抛出try语句中的错误类型
+	throw语句：创建自定义错误。技术术语：创建或抛出异常(exception)
+		语法：throw exception //exception可以是字符串、数字、逻辑值或对象
+		通常在try语句定义throw，然后在catch中用 "err" 执行错误和异常抛出
+	所以 "err"显示异常，"err.message"显示错误。
+JS验证：在数据被送往服务器前对HTML表单中的输入数据进行验证。验证的典型表单数据：
+    用户是否已填写表单中的必填项目？
+    用户输入的邮件地址是否合法？
+    用户是否已输入合法的日期？
+    用户是否在数据域 (numeric field) 中输入了文本？
+	具体如何验证还要自己编函数？？？
+
+//**************************JS HTML DOM*************************//
+DOM简介：通过HTML DOM，可访问JavaScript HTML文档的所有元素
+	HTML DOM(Document Object Model)：当网页被加载时，浏览器会创建页面的DOM
+		HTML DOM由对象的树所构造。查看对象树：http://www.w3school.com.cn/js/js_htmldom.asp
+		JS有足够能力创建动态HTML，因其能：
+			改变所有HTML元素、HTML属性和CSS样式，以及对页面中所有事件作出反应
+	查找HTML元素：
+		x=document.getElementById("id") //成功则以对象形式返回该元素，失败返回null
+		x.document.getElementByTagName("p") //通过标签名查找元素：x是一个元素对象，此句查找x元素的所有<p>子元素
+		还可通过类名查找元素（暂不知如何用）
+DOM HTML：改变HTML元素内容
+	改变HTML输出流：创建动态HTML内容，如：document.write(Date()); //输出日期和带时区的时间（不能自动刷新）
+	改变HTML内容：用innerHTML属性
+	改变HTML属性：如：document.getElementById("image").src="app.jpg";
+DOM CSS：改变CSS，如：document.getElementById("p1").style.color="red";
+DOM 事件：对HTML事件作出反应
+	HTML事件例子：点击鼠标、网页已加载、图像已加载、鼠标移动到元素上、输入字段被改变、提交HTML表单、用户触发按键时
+		对点击鼠标事件作出反应：onclick=JavaScript //一般应为函数或方法
+	事件属性：向HTML元素分配事件，如可向任何元素分配onclick事件
+		可通过元素的属性直接分配，也可使用DOM分配（在<script>元素中）
+	onload和onunload事件：在进入和离开页面是触发的事件，可用于处理cookies
+		navigator.cookieEnabled: 检测浏览器是否启用cookie，返回布尔值
+	onchange事件：常用来验证输入字段，如 onchange="myFunction()"，在焦点离开输入字段后对其中字符执行该函数
+	onmouseover和onmouseout事件：在鼠标移至元素和离开元素时触发的事件
+	onmousedown：按下鼠标时触发；onmouseup：释放鼠标时触发
+	onfocus事件：当输入字段获得焦点时触发的事件
+DOM节点（元素）：添加和删除HTML元素
+	创建新的HTML元素：先创建该元素，然后再追加该元素
+		var para=document.createElement("p"); //创建一个<p>元素
+		var node=document.createTextNode("New paragragh"); //要向p元素添加文本，必须先创建文本节点
+		para.appendChild(node); //然后向p元素追加这个文本节点
+		最后还得向一个已有的元素追加该新元素：
+			element.appendChild(para);
+	删除已有的HTML元素：先得获得该元素的父元素
+		通过id获得父元素，然后通过标签名获得要删除的元素，再删除：
+			parent.removeChild(child); //parent为父元素，child为其子元素，也是要删除的元素
+		要想删除一个元素，必须向DOM告知它的父元素。若已有要被删除元素的对象：child，则可以这样：
+			child.parentNode.removeChild(child); //通过parentNode属性先找到其父元素，然后再调用removeChild
+
+/*************************JavaScript对象****************************/
+JS对象：
+	创建JS对象：
+		使用new Object；替代语法（使用对象literals）：
+			person={name:"Huihui",age:23,eyecolor:"marron"} //注意中间用逗号隔开
+		使用对象构造器（使用函数）：
+			function person(name, age){this.name=name;this.age=age;}
+			var hui= new person("Huihui", 23); //实例化person对象
+		给对象添加属性很简单：person.sex="M"
+		给对象添加方法：在构造器函数内部定义方法：
+			this.changeName=changeName; function changeName(name){this.name=name;}
+			很重要的一点是方法前添加的这条语句。否则将不能调用方法
+	JavaScript不使用类，因它基于prototype（原型），而不是类		
+JS Number对象：
+	Number(s)：将s转化为数字
+	所有JS数字均为64位
+	var x=023, y=0xee; //x为八进制数，y为16进制数
+	常用方法：toString()
+JS String对象：
+	String(s)：将对象s转化为字符串
+	length属性可测量字符串的长度
+	indexOf()方法：定位字符串中某个指定字符首次出现的索引（从0开始），若没有该字符返回-1
+	match()方法：查找特定子字符串，若成功，返回该子字符串，否则返回null
+	replace()方法：用指定字符串替换掉一些字符串：str="abc";str.replace(/a/, "hui"); //用"hui"替换"a"
+	toUpperCase()：小写转大写
+	许多方法更待使用：http://www.w3school.com.cn/jsref/jsref_obj_string.asp
+JS Date对象：
+	定义日期：var myDate=new Date(); //myDate自动使用当前日期和时间作为初始值
+	操作日期：
+		myDate.setFullYear(2017,01,13) //设置myDate对象为2017年2月13日。注：月份应减一！！！
+		myDate.setDate(myDate.getDate()+4); //将myDate对象设置为4天后
+	更多属性与方法：http://www.w3school.com.cn/jsref/jsref_obj_date.asp
+	在网页上显示时钟：需使用setTimeout方法。
+JS数组：
+	定义数组：可以在声明的时候控制数组的容量：
+		var cars=new Array(3);  //数组有三个元素，但还是可以无限扩大容量
+	for...in...循环也可用于便利数组：for (x in cars){...}
+	concat()方法：合并两个数组：arr1, arr2: arr3=arr1.concat(arr2);
+	join()：将数组的所有元素组合成一个字符串：arr.join("-") //个元素之间用 "-" 连接
+	sort()：没有参数时，将数组元素按字符编码的顺序排序；要想给数字排序，需传入一个比较函数。
+	跟多方法：http://www.w3school.com.cn/jsref/jsref_obj_array.asp
+JS Boolean对象：
+	Boolean对象可将一个非逻辑值转化为逻辑值：Boolean("jfiej");
+		非空字符串，非零数字转化后都为 true
+		0，-0，空字符，null，NaN，undefined，还有为初始化的逻辑值，则都为 false
+JS Math（算数）对象：执行常见的算数任务
+	JavaScript提供8中可被Math对象访问的算数值（Math对象属性）：
+		常数、圆周率、2的平方根、1/2 的平方根、2 的自然对数、10 的自然对数、以2为底的e的对数、以10为底的e的对数
+	使用法：Math.E, Math.PI, Math.SQRT2, Math.SQRT1_2, Math.LN2, Math.LN10, Math.LOG2E, Math.LOG10E
+	Math.round()方法：对一个数进行四舍五入：Math.round(0.5); // =1
+	Math.random()：产生一个0到1之间的随机数
+		产生0-10的随机数：Math.floor(Math.random()*11);
+	Math.max(), Math.min()：选中任意个数中的最大最小值：Math.max(1, 5, 3, 7, 2);
+	更多方法：http://www.w3school.com.cn/jsref/jsref_obj_math.asp
+JS RegExp（正则表达式）对象：用于存储检索模式
+	定义RegExp：var patt1=new RegExp("fe"); //在一个字符串中检索寻找字符e
+	3个方法：test(), exec() and compile()
+		test()检索字符串指定值，返回true或false：patt1.test("jife"); //true   patt1.test("jfie"); //false
+		exec()也是检索指定值，返回被找到的值或null，并确定其位置：patt1.exec("jife"); //返回 fe
+			定义RegExp的时候可向其添加第二个参数"g"：var patt1=new RegExp("e","g")，配合循环，可以检索所有匹配的字符，而不只是第一个
+		complie()即可改变检索模式，也可添加或删除第二个参数：patt1.compile("f"); //检索模式变为f
+	更多关于正则表达式规则：http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp
+
+/*************************JS Window**************************/
+JS Window（浏览器对象模型）：使JavaScript能够与浏览器“对话”
+	BOM(Browser Object Model)：尚无正式标准
+	Window对象：所有浏览器均支持Window对象，它表示浏览器窗口。
+		全局变量时window对象的属性，全局函数是window对象的方法，甚至DOM的document也是window的属性：
+			window.document.getElementById("good"); //与去掉window使用效果一致
+	window（浏览器窗口）尺寸：宽和高，不包括工具栏和滚动条：
+		对于其他浏览器：window.innerHeight和window.innerWidth
+		对于IE 5, 6, 7, 8：document.documentElement.clientHeight或document.body.clientHeight
+		所以涵盖所有浏览器的测量窗口尺寸的方案：
+			var w=window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    window.open() - 打开新窗口，貌似其他三个不知怎么用
+    window.close() - 关闭当前窗口
+    window.moveTo() - 移动当前窗口
+    window.resizeTo() - 调整当前窗口的尺寸
+JS screen：window.screen对象包含有关用户屏幕的信息，此对象使用时可以不使用window前缀
+	screen.availWidth - 可用的屏幕宽度，返回像素值，会减去界面特性，如任务栏
+	screen.availHeight - 可用的屏幕高度
+JS location对象：window.location对象用于获得当前页面地址(URL)，并把浏览器重新定向到新的页面（也可不要window前缀）
+	一些属性例子：
+		location.hostname 返回 web 主机的域名
+		location.pathname 返回当前页面的路径和文件名
+		location.port 返回 web 主机的端口 （80 或 443）
+		location.protocol 返回所使用的 web 协议（http:// 或 https://）
+		location.href 返回当前页面的URL
+		location.assign("URL") 加载一个新的文档（页面）
+JS history对象：包含浏览器历史。同样可不用window前缀
+	为了保护用户隐私，对 JavaScript 访问该对象的方法做出了限制。
+    history.back() - 与在浏览器点击后退按钮相同
+    history.forward() - 与在浏览器中点击按钮向前相同
+JS navigator对象：包含有关浏览器访问者的信息
+	都是些关于检测浏览器版本等信息的属性和方法，先搁着罢！！
+JS PopupAlert（消息框）：JS可创建三中消息框：警告框，确认框，提示框
+	警告框：alert("text"); //需要用户点击确认按钮才能继续操作
+	确认框：confirm("text"); //用于使用户验证或接受某些信息，必须点一个按钮：确认按钮（返回true）和取消按钮（false）
+	提示框：prompt("text","default value");
+		用于提示用户在进入页面前输入某个值，输入之后点确认则返回输入的值，点取消返回null
+JS timing（计时）事件：允许在一个设定时间之后执行代码，两个关键方法：
+	setTimeout()：var t=setTimeout("JavaScript语句", 毫秒);
+		返回某个值，储存在t中；JS语句可以是一个方法或者函数。意思是多少毫秒后执行第一个参数
+		无穷循环：编写一个函数，里面调用setTimeout()，而在setTimeout()中第一个参数调用该函数本身
+	clearTimeout()：clearTimeout(t); //取消setTimeout
+JS cookies：用来识别用户
+	cookie是存储于访问者计算机中的变量
+	名字cookie：再次访问会显示首次访问是输入的名字信息
+	密码cookie：密码也可存储于cookie中
+	日期cookie：再次访问会显示上一次访问时间
+	创建和存储cookie：http://www.w3school.com.cn/js/js_cookies.asp
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

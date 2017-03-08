@@ -1,0 +1,13 @@
+安装了xampp或easyPHP后就不要再单独安装Mysql了！！！人家已经帮你集体打包了！！！
+xampp Mysql打不开就是因为单独安装了一个mysql服务。所以要移除此已有服务，方法异常简单：
+	以管理员身份运行cmd，输入 mysqld -remove
+	!!!!!!!!!!!!!!!!!!!!
+另外要单独安装mysql的话：
+	将其bin目录添加到环境变量
+	在管理员cmd中运行 mysqld -install
+net stop/start mysql 命令都是在管理员cmd中运行的
+登陆phpMyAdmin返回类似下列错误：
+	#1045 - Access denied for user 'root'@'localhost' (using password: NO) 
+在xampp->phpMyAdmin目录下打开config.inc.php文件，找到以下行：
+	$cfg['Servers'][$i]['password']=''
+在其中输入正确的root登录密码

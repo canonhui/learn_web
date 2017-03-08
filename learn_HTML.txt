@@ -1,0 +1,138 @@
+默认地，浏览器不会显示未知元素。新元素不会破坏您的页面。
+
+<br /> 换行标签，可用于在不产生一个新段落的情况下进行换行
+<hr /> 标签在 HTML 页面中创建水平线。
+在开始标签中添加斜杠，比如 <br />，是关闭空元素的正确方法，应积极使用
+HTML元素包括开始标签，结束标签以及元素内容
+HTML属性总是以名称/值对的形式出现，比如：name="value"。
+HTML注释：<!--注释文本-->
+将要被废弃的标签：
+	<center> <font> <basefont> <s> <strike> <u>
+将要被废弃的属性：
+	align bgcolor color
+使用样式代替以上
+	通过style属性实现：<p style="background-color:green;font-family:Verdana;font-size:44px">
+HTML引用：
+	<q> <blockquote>
+对缩写进行标记能够为浏览器、翻译系统以及搜索引擎提供有用的信息。
+	<abbr title="缩写原内容">abbr</abbr>
+HTML CSS
+	外部样式表：<link rel="stylesheet" type="text/css" href="mystyle.css">
+	内部样式表：在head部分通过style标签定义，格式为CSS格式
+	内联样式：在相关标签中使用style属性
+
+	定义一个没有下划线的链接：
+		<a href="/example/html/lastpage.html" style="text-decoration:none">
+HTML链接
+	链接到页面内的链接（锚）：
+		定义锚：<a name="Mao">这是一个anchor</a>  记住，必须要在<a>元素里使用name或id属性
+		链接到锚：<a href="#Mao">指向锚:在锚名前加个“#”号</a> 
+	链接到页面外的锚：
+		<a href="http://www.w3school.com.cn/html/html_links.asp#more_examples">其实也是一个链接</a>
+	创建发邮件的链接：（说空格用%20代替，但是直接空格好像也行）
+		<a href="mailto:ptt2hui@gmail.com?subject=bb&body=cc ff">send a mail</a>
+HTML图像
+	替换文本属性：Alt，无法载入图像时显示的内容
+	添加背景图片（当然就是在body标签中添加属性）：<body background="j/a.jpg">
+	设置图片对齐方式：img标签中添加align属性，属性值有：top, middle, bottom, left, right
+	调节图片大小就有height和width俩属性
+	创建图像映射(image-map,值带有可点区域的图像)：map标签+area标签（map内部）
+		在img标签中需使用usemap属性，其值为map标签中的name或id属性的值（注意在前面加个#号)
+		然后在map元素内使用area标签定义可点区域，其属性有shape, coords, target, alt, href, nohref等
+		注释：如果某个 area 标签中的坐标和其他区域发生了重叠，会优先采用最先出现的 area 标签。浏览器会忽略超过图像边界范围之外的坐标。
+	鼠标放在图像上时能显示坐标：在img标签中使用ismap属性，无属性值，但img必须在a元素中
+HTML表格
+	table标签开头，一个tr标签为一行，一个td(table data)为一个单元格，一个th标签为一个表头（居中粗体）
+	caption标签定义表的标题，其位置可在table元素内的任何位置
+	边框有table中的border属性负责，
+	太杂了，需要用的时候再看吧
+HTML列表
+	无序列表(unordered list)：始于<ul>标签，而每个列表项则始于<li>标签
+	有序列表(ordered list)：始于<ol>标签，每个列表项始于<li>
+	自定义列表：始于<dl>标签，每个自定义列表项以 <dt> 开始。每个自定义列表项的定义以 <dd> 开始
+HTML块元素(block level element)：通常会以新行来开始（和结束）：h1, p, ul, table
+	<div>标签定义一个块元素，是可用于组合其他HTML元素的容器。与CSS配合对其内容设置样式属性
+HTML内联元素(inline element)：显示时通常不以新行开始：b, td, a, img
+	<span>用来组合文档中的行内元素，以便通过样式来格式化它们
+HTML类：就是<div>和<span>的应用
+HTML响应式web设计(Responsive web design)：在任何尺寸的屏幕上都能正常地显示页面（这个得专门研究）
+	bootstrap
+HTML框架：在同一个浏览器窗口中显示不止一个页面（一份HTML文档就是一个框架）
+	<frameset>标签定义框架，其属性rows和cols设置各框架所占比。<frame>标签在<frameset>内，其属性src设置框架要显示的HTML文档
+	默认框架有可见边框并可随意拖动，可在<frame>中添加属性 noresize="noresize"
+HTML Iframe：在网页内显示网页
+	<iframe src="URL">URL指向要显示网页</iframe>
+	删除边框：frameborder="0"
+	设置iframe的尺寸：height和width属性，可是像素值和百分比
+	使用iframe作为连接的目标，即让某个连接的页面在iframe里面显示
+		给<iframe>标签一个name属性，然后让<a>标签的target属性值为name属性的值
+	把需要的文本放置在 <iframe> 和 </iframe> 之间，以应对无法理解 iframe 的浏览器。	
+HTML背景：可通过body的两个属性设置（HTML4中已被废弃）
+	bgcolor属性设置背景颜色；background属性设置背景图片
+HTML脚本：由<script>标签定义（需要JavaScript支持。。。）
+	<noscript>标签提供无法显示脚本时的替代内容，跟在<script>标签后
+	为防止老浏览器压根无法识别<script>，可将<script>标签内容用注释标签注释掉，新浏览器仍然会显示注释的内容
+HTML头部元素
+	<head>是所有头部元素的容器，可容纳：<title>、<base>、<link>、<meta>、<script> 以及 <style>
+	<title>标签定义文档标题，其在所有HTML/XHTML文档中都是必需的
+	<base>标签为页面上所有连接规定默认目标(target)或默认地址，浏览器将使用此地址来解析所有相对URL，包括 <a>、<img>、<link>、<form> 标签中的 URL
+	<link>标签定义文档与外部资源之间的关系
+	<style>标签用于为文档定义样式信息
+	<meta>元素被用于规定页面的描述、关键词、文档的作者、最后修改时间以及其他元数据，元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。
+HTML实体字符(character entities)：预留字符必须被替换为实体字符，格式：
+	&entity_name 或 &#entity_number
+HTML统一资源定位符(Uniform Resource Locator)：一个网址严格遵守以下语法规则：
+	scheme://host.domain:port/path/filename
+		scheme - 定义因特网服务的类型。最常见的类型是 http
+		host - 定义域主机（http 的默认主机是 www）
+		domain - 定义因特网域名，比如 w3school.com.cn
+		:port - 定义主机上的端口号（http 的默认端口号是 80）
+		path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
+		filename - 定义文档/资源的名称
+	常见scheme类型：http，HTTPS，FTP，file（计算机上的文件）
+HTML URL编码：URL 只能使用 ASCII 字符集来通过因特网进行发送。
+	URL 编码使用 "%" 其后跟随两位的十六进制数来替换非 ASCII 字符。
+	URL 不能包含空格。URL 编码通常使用 + 来替换空格。
+HTML颜色：
+	颜色值：#0000FF=rgb(0,0,255)；颜色名：16种
+HTML文档类型：<!DOCTYPE>声明：1.帮助浏览器了解文档类型；2.帮助浏览器了解HTML文档的版本
+
+	----------------HTML表单--------------------
+HTML表单：<form>元素，用于收集用户输入，内可含表单元素，包括<input>，复选框，单选按钮，提交按钮等
+	<input>元素 type属性：
+		<input type="text">创建一个文本输入框，value属性可指定默认值
+		<input type="radio">定义单选按钮，需有name属性且其值必须相同，可选value属性
+		<input type="submit">定义向表单处理程序(form-handler，服务器脚步)提交表单的按钮。此handler在<form>标签的action属性中指定
+		<input type="password">定义密码字段，其中的字符会被掩码处理
+		<input type="checkbox">定义复选框	
+		HTML5中新增的type：color, date, datetime, datetime-local, email, month, number, range, search, tel, time, url, week
+	一些限制<input>的属性：disabled, max, maxlength, min, pattern, readonly, required, size, step, value
+		action属性：如果省略，则action被设置为当前页面？？
+		method属性：规定在提交表单时采用的HTTP方法(GET或POST)
+			<form action="ac.php" method="GET">（GET是默认方法）
+			GET适合少量数据的提交，及当没有敏感信息时。表单数据在页面地址栏中可见action_page.php?firstname=Mickey&lastname=Mouse
+			POST使用场合则相反
+		name属性：有该属性的输入字段才能被提交
+	<fieldset>标签可组合表单。
+		在<form>标签内，然后将需要组合的表单数据包含在其元素内容内
+	<legend>元素为<fieldset>定义标题，最好紧跟<fieldset>开始标签
+	<enctype>标签规定被提交数的编码，默认：url-encoded
+	<select>定义下拉列表（同样得有name属性）
+		<option>元素定义选项内容，有几个选项就有几个<option>，添加了selected属性（无属性值）的选项为默认被选选项
+	<textarea>定义多行输入字段（文本域），暂时发现name，rows和cols属性
+	<button>定义可点按钮，会弹出警告窗口
+		<button type="button" onclick="alert('你好啊')">nihao</button>（不要漏掉引号）
+	HTML5 <datalist>元素：为 <input> 元素规定预定义选项列表，放在<input>内，<input>的list属性必须引用<datalist>的id属性
+	
+	=====================HTML图形======================
+HTML画布(Canvas)：<canvas>元素用于在网页上绘制图形，拥有id, width和height属性
+	画布是一个矩形区域，必须通过JavaScript才能控制每一个像素
+	canvas 拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法
+HTML5 SVG(Scalable Vertor Graphics): 可伸缩矢量图形
+	使用XML格式定义图形，是万维网联盟的标准
+	SVG 图像可通过文本编辑器来创建和修改
+	SVG 图像可被搜索、索引、脚本化或压缩（SVG教程）
+
+
+
+	

@@ -1,0 +1,69 @@
+HTML5将成为HTML、XHTML以及HTML DOM的新标准
+WHATWG: Web Hypertext Application Technology Working Group 与 W3C W3 Web 的合作成果
+
+HTML5视频：<video>元素。支持3种视频格式：
+	Ogg=Theora视频编码+Vorbis音频编码
+	MPEG4=H.264视频编码+AAC音频编码
+	WebM=VP8视频编码+Vorbis音频编码
+	不同浏览器支持的格式不同：http://www.w3school.com.cn/html5/html_5_video.asp
+	在HTML5中显示视频：
+		<video src="movie.ogg" controls="controls">browser doesn't support the video tag</video>
+		controls属性提供播放、暂停和音量等控件
+		元素内容工不支持video的浏览器显示
+		<video>可以包含多个source元素，浏览器选择第一个可识别的格式
+			<video width="320" height="240" controls="controls">
+				<source src="movie.ogg" type="video/ogg">
+				<source src="movie.mp4" type="video/mp4">浏览器不资词</video>
+		<video>的其他属性：
+			autoplay="autoplay" - 视频在就绪后马上播放
+			loop="loop" - 视频循环播放
+			preload="preload" - 视频在页面加载时进行加载，并预备播放。若有autoplay，则忽略该属性
+HTML5 video+DOM：
+	一些方法：play(): 播放视频；pause(): 暂停
+	一些属性：paused：表示视频已暂停
+	还有一些事件，都没有课查询资料。。。
+HTML5音频：<audio>元素，可播放声音文件或音频流，支持三种格式：
+	Ogg Vorbis, MP3 and Wav
+	<audio src="song.ogg" controls="controls">不支持audio元素的浏览器显示此内容</audio>
+	同样可使用多个<source>元素
+	拥有的属性跟<video>差不多
+HTML5拖放：(drag and drop)：抓取对象以后拖到另一个位置
+	HTML5中，拖放是标准的一部分，任何元素都能拖放
+	为使一个元素可拖放，把draggable属性设为true：<img draggable="true" />
+	规定当元素被拖动时，会发生什么：
+	放到何处：ondragover事件
+	讲得不明不白，不看了
+HTML5 Canvas（画布）：用于在网页上绘制图形的元素（用JavaScript）
+	创建canvas元素：
+		<canvas id="ll" width="100" height="50"></canvas> 可以不设置长和高，有个默认值
+	通过JavaScript来绘制：canvas本身是没有绘图能力的
+		var c=document.getElementById("ll");   //先通过id找到canvas元素
+		var cxt=c.getContext("2d"); //这是个内建HTML5对象，拥有多种绘制路径、矩形、圆形、字符及添加图像的方法。目前2d是唯一合法值
+		cxt.fillStyle="#0000FF"; //给画布设置填充颜色
+		cxt.fillRect(0, 0, 13, 14); //设置填充形状和位置、尺寸
+		还可以画线，画圆，颜色渐变和添加图像
+HTML5 Geolocation（地理定位）：是个API
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+	

@@ -1,0 +1,32 @@
+XHTML: EXtensible HyperText Markup Language：可扩展超文本标签语言
+XHTML是更严谨更纯净的HTML版本，目标是取代HTML
+XHTML与HTML4.01几乎是相同的
+
+XHTML Why：
+	XHTML是HTML与XML（可扩展标记语言）的结合物，包含了所有与XML语法结合的HTML4.01元素
+XHTML vs HTML：
+	XHTML标签名必须用小写字母，XHTML文档必须拥有根元素<html></html>
+XHTML语法：
+	属性名称必须小写；属性值必须加引号；属性不能简写（就是说必须要有一个属性值）；
+	用id属性代替name属性；HTML4.01中有name属性的元素：a, applet, frame, iframe, img, map
+	XHTML DTD 定义了强制使用的HTML元素
+	兼容性提示：在"/"（闭合标签）前添加额外空格，以使XHTML与当今浏览器相兼容
+	语言属性lang：定义元素内容所用的语言类型，几乎应用于所有XHTML元素。需额外添加xml:lang：
+		<div lang="no" xml:lang="no">Norge</div>
+	强制使用的XHTML元素：文档类型声明，<html/>, <head/>, <body/>，且<title/>必须在<head/>内部
+		文件类型声明并非 XHTML 文档自身的组成部分。它并不是 XHTML 元素，也没有关闭标签
+		在 XHTML 中，html标签内的 xmlns 属性是必需的：<html xmlns="http://www.w3.org/1999/xhtml"/>
+XHTML DTD：
+	DTD 规定了使用通用标记语言(SGML)的网页的语法。
+	诸如 HTML 这样的通用标记语言应该使用 DTD 来规定应用于某种特定文档中的标签的规则，这些规则包括一系列的元素和实体的声明。
+	在通用标记语言(SGML)的文档类型声明或 DTD 中，XHTML 被详细地进行了描述。
+	XHTML DTD 使用精确的可被计算机读取的语言来描述合法的 XHTML 标记的语法和句法
+	三种XHTML文档类型：STRICT（严格）：需要干净的标记，避免表现上的混乱。请与层叠样式表配合使用
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	TRANSITIONAL（过渡）：当需要利用HTML在表现上的特性时，并且当需要为那些不支持层叠样式表的浏览器编写XHTML时
+	FRAMESET（框架）：需要使用HTML框架将浏览器窗口分割为两部分或更多框架时
+	TRANSITIONAL类型应用最为广泛（不是STRICT吗？？），因为对大多数入门开发人员来说，严格类型可能真的太严格了
+XHTML How to：教你如何将HTML站点升级为XHTML
+
+
+	

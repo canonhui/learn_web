@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		table {
+			border:solid black 2px;
+			border-collapse:collapse;}
+		td {
+			align:left;
+			border:solid black 2px;}
+		#submit {
+			border:none;}
+	</style>
+</head>
+
+<body>
+	<p>Enregistrement d'un utilisateur</p>
+	<table><form method="POST" action="http://localhost/learn_files/learn_web/PHP_exercise.php">
+		<tr>
+			<td colspan="1">Nom</td>
+			<td><input type="text" name="Nom" value='<?php echo $Nom;?>' required="required" />*</td>
+		</tr>
+		<tr>
+			<td>Prenom</td>
+			<td><input type="text" name="Prenom" /></td>
+		</tr>
+		<tr>
+			<td>Sexe</td>
+			<td>
+				<label for="Homme">Homme:</label><input type="radio" name="Sexe" id="Homme" value="Homme" /><br />
+				<label for="Femme">Femme: </label><input type="radio" name="Sexe" id="Femme" value="Femme" />
+			</td>
+		</tr>
+		<tr>
+			<td>Fonction</td>
+			<td><select name="Fonction" id="Fonction">
+				<option value="Enseignant">Enseignant</option>
+				<option value="Etudiant">Etudiant</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td>Commentaires</td>
+			<td><textarea placeholder="Tapez ici vos commentaires" name="Commentaires"></textarea></td>
+		</tr>
+		<tr>
+			<td id="submit" colspan="2"><input name="image" type="image" src="http://sc1.hao123img.com/data/2017-01-21/1_4b6959098a0698ba5fec01bd8df58936_0" /></td>
+			<td id="reset"><input type="reset" value="reset" /></td>
+		</tr>
+	</form></table>
+</body>
+</html>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

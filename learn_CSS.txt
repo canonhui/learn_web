@@ -1,0 +1,294 @@
+CCS对颜色值有缩写形式：#ff0000=#f00
+p {color: rgb(12%,0%,0%} 注：这里的百分号是不能省的
+CSS对大小写不敏感，不过例外：如果涉及到与 HTML 文档一起工作的话，class 和 id 名称对大小写是敏感的。
+不要再属性值和它的单位之间输入空格：20px，否则会造成无法识别
+*号表示选择所有元素的选择器：*{margin:0}
+浏览器总是有默认的边距设定，因此创建CSS样式表之前考虑 *{margin:0;padding:0;}
+
+CSS(Cascading Style Sheets): 层叠样式表
+	一个HTML元素被多个样式定义时的层叠次序：
+		内联样式>内部样式表>外部样式表>浏览器默认设置
+CSS语法：有两个主要部分构成：选择器，声明
+	selector {declaration1; declaration2; ... }
+	选择器通常是HTML元素（还有特殊情况？？）
+	声明由一个属性和一个值组成，属性值不需要引号
+	属性为多个单词时，中间用 "-" 隔开
+	如果值为若干个单词，则需要引号：p {font-family:"sans serif";}
+	最后一条声明可不加分号，但最好加上
+	每行只描述一个属性以增加可读性
+CSS高级语法
+	选择器分组：使多个选择器共享相同的声明
+		h1, h2, h4 {color: green;}
+	继承：子元素可从父元素继承属性（body可以说是所有元素的父元素）
+		个别浏览器不支持继承(Netscape 4)，那就给所有的子元素重新写一张样式表呗，虽然会浪费一些带宽
+CSS派生选择器(CSS1中叫上下文选择器：contextual selector)如：
+	li strong {font:family: italic;}，只有li元素中的strong元素才会应用此样式
+		好处是无需为strong定义class或id属性，使代码更简洁
+	（后面还有更多选择器）
+CSS子元素选择器：只选择作为某元素子元素的元素，而不能选择其孙元素：
+	h1>strong {color:red;}
+CSS相邻兄弟选择器：选择紧接在某个元素后的元素，且两者拥有同一个父元素：
+	h1+p {margin-top:50px;} 
+	此样式只会选择跟在<h1>后面的<p>元素，且其必须是同一个父元素
+CSS id 选择器：为标有特定id的HTML元素指定特定样式
+	id选择器用"#"号来定义：
+		#red {color:red;}（HTML中某个标签的id属性值为red）
+		有些老式浏览器不支持，需在前加上标签名
+	在现代布局中，id选择器常用于建立派生选择器如：
+		#sidebar p {font-style:italic;}
+		当某个元素id为sidebar，且其内部有p元素时，应用此样式，因为sidebar在p元素的外部
+	同一个id只能在每个HTML文档中出现一次
+	id选择器不能使用词列表
+	类选择器和id选择器都区分大小写
+CSS 类(class)选择器：用点号定义：
+	.center {text-align: center;}
+	注：类名第一个字符不能使用数字，否则在Mozilla或Firefox中不起作用
+	也可用于建立派生选择器
+	类名前加标签名指定只有该标签的该类才应用相关样式，因：
+		同个类名是可以应用于多个标签的
+		类名前的标签也可以组合：p,h1.strong{color:black;}
+	CSS多类选择器：一个class值包含多个词列表，各词之间用空格分开，如：<p class="important warning">
+		要想匹配这个类，可用：.important 或 .warning 或 .important.warning（顺序无影响）
+CSS属性选择器：对带有指定属性的元素设置样式
+	属性选择器：下例为带有title属性的所有元素设置样式：
+		[title] {color: red;}
+	根据多个属性进行选择：a[href][title] {color:blue;}
+	属性和值选择器：为title="huihui"的所有元素设置样式：
+		[title=huihui] {color:green;}
+		这是完全匹配，即属性和属性值必须完全一致
+	多个值的属性和值选择器：
+		p.[title~=hello]：属性值由空格隔开，或是多个单词，其中有hello时
+		[lang|=en]: 属性值由连字符隔开时，只会匹配等于"en"或以"en"开头的元素
+		[title^=hello]: 属性值以hello开头
+		[title$=hello]: 属性值以hello结尾
+		[title*=hello]: 属性值中包含hello就行（最自由）
+CSS创建：慎用内联样式，因其将表现和内容混杂在一起。除非样式仅在一个元素上应用一次时
+	<h1>在内部样式表中定义了color，在外部样式表中定义了color和font-famliy，则会采用内部的color和外部的font-family
+
+/**********************************CSS样式**********************************/
+CSS背景：可使用纯色或背景图像创建相当复杂的效果
+	所有背景属性都不能继承
+	背景色：用background-color属性。可以为所有元素设置背景色
+		不能继承，默认值为transparent-透明，即一个元素若没设置背景色，则背景是透明的
+	背景图像：background-image属性，属性值是一个URL值：
+		body {background-image: url(image.jpg);}
+	背景重复：即平铺（重复）背景图像，在background-image属性后加background-repeat属性。
+		属性值有repeat, repeat-x, repeat-y, no-repeat（默认）
+	背景位置：background-position，属性值：
+		关键字：top, left等，一般成对，可按任意顺序。若只有一个，则第二个为center
+		长度值：如20px或4cm，相对左上角先水平后垂直
+		百分比：0%-100%相对左上角
+		两两可混用；两个值用空格隔开；若只有一个值，则第二个默认都为50%
+	背景关联：文档滚动，背景的动作：background-attachment，属性值
+		scroll：跟着文档滚动，默认值
+		fixed：背景固定
+		inherit：规定从父元素继承
+CSS文本：改变文本的颜色、字符间距，对齐文本，装饰文本，对文本进行缩进，等等
+	缩进文本：text-indent，给文本第一行缩进一个给定长度，该长度可以是负值；不能用于行内元素（用边距）
+		使用负长度值，实现“悬挂缩进”。应加一个外边距(margin-left)或内边距(padding-left)属性防止超出浏览器边界
+		使用百分比：该百分比是相对父元素的宽度而言
+		事实上可使用任何长度单位
+		text-indent可以继承，即使子元素没有该属性，也会使用父元素的值进行缩进
+	水平对齐：text-align，属性值：left, right, center, justify（两端对齐）
+	字间隔（单词）：word-spacing，默认normal，与0值一样，其接收一个可正可负的长度值
+		一个字(word)定义为由空格包围的一串字符
+	字母间隔：letter-spacing，属性值和word-spacing一样
+	字符转换：text-transform，处理文本大小写，属性值：
+		none：默认值
+		uppercase：将文本转化为全大写
+		lowercase：将文本转化为全小写
+		capitalize：只让每个单词首字母大写
+	文本装饰：text-decoration，属性值：
+		none：默认值（连接默认有下划线，可用此属性值取消）
+		underline：加下划线
+		overline：加上划线
+		line-through：加一条贯穿线
+		blink：让文本闪烁
+		本属性的值只替换不积累；可以使用多个属性值
+	处理空白符：white-space，
+CSS字体：定义文本的字体系列、大小、加粗、风格（如斜体）和变形（如小型大写字母）
+	字体系列：CSS有两种不同类型的字体系列名称：
+		通用字体系列：拥有相似外观的字体系统组合- Serif, Sans-serif, Monospace, Cursive, Fantasy 共5种
+		特定字体系列：具体的字体系列("Times" or "Courier")
+		font-family: 指定字体系列的属性
+			font-family:sans-serif; 只是想使用sans-serif字体，但并不关心是哪一种字体，用户代理会选择一种具体的字体
+			font-family:Georgia; 指定更具体的字体。问题：若没有安装这种字体，就会使用用户代理的默认字体
+			font-family:Georgia,serif; 总是提供一种通用字体系列，以留一条后路
+			当然还可以指定一系列特定字体，用逗号连接。用户代理会按顺序使用这些字体系列
+		使用引号：当字体系列名称中有空格，或者包含"#", "$"等特殊符号时，需在font-family声明中加引号（单、双均可）
+	字体风格：常用于规定斜体文本
+		font-style属性设置字体风格，有normal, italic, oblique 三个值可选
+		italic 和 oblique 都是使字体倾斜。通常情况下，两种字体在web中看上去一样
+	字体变形：设定小型大写字母，就是不同大小的大写字母
+		font-variant属性，有 normal, small-caps, inherit 三个值
+	字体加粗：font-weight设置文本粗细，其值有：
+		bold：设置文本为粗体；normal：默认值，定义标准大小的字符
+		100-900：为字体指定9级加粗度，100最细；400=normal；700=bold
+		bolder：设置比所继承值的加粗度高一个级别，而lighter：低一个级别
+	字体大小：font-size，可使用绝对值或相对值
+		绝对值：将文本设置为指定的大小，不允许用户在所有浏览器中改变文本大小（不利于可用性），在确定了输出的物理尺寸时很有用
+		相对值：相对于周围的元素来设置大小，允许用户在浏览器中改变文本大小
+		普通文本（如段落）默认大小是16px(1em)
+		W3C推荐使用em单位来设置字体大小。1em等于当前的字体尺寸，也即父元素的默认字体大小
+		为body元素以百分比设置默认font-size值，其他子元素用em设置，这样在所有浏览器显示相同大小，且均可进行缩放
+	font属性：所有字体属性在一个声明中。顺序：
+		font-style -> variant -> weight -> size/line-height -> family
+		可以不全部指定，为指定的会用默认值代替
+CSS链接：根据链接的状态，有4种可用于样式的选择器
+	a:link：普通的，未被访问的链接
+	a:visited: 已被访问的链接
+	a:hover: 鼠标放置于连接上时
+	a:active: 鼠标点击链接时
+	顺序：hover应在前两个后面，active应在hover后面
+	可用于链接的属性有：color, font-family, background-color, display等
+CSS列表：设置列表项标志(marker)的位置，形状，或使用图像
+	列表类型：list-style-type属性，默认disc：实心圆
+	列表项图像：list-style-image属性，使用url()
+	列表标志位置：list-style-position，设置标志出现在列表项内容之外还是之内
+	可将以上三个属性合并为一个：list-style：
+		li {list-style: url(aa.gif) square inside}
+CSS表格
+	表格边框：用border属性，可设置边框宽度，颜色和线条类型：table,th,td{border: 1px solid blue}
+		上例显示为双线边框，因三个元素都有独立的边框。若想单线对table使用border-collapse属性
+	折叠边框：border-collapse设置是否将边框折叠为单一边框：table{border-collapse:collapse;}
+	表格宽度和高度：用width和height属性
+	表格文本对齐：text-align设置水平对齐方式，如right, left, center
+		vertical-align设置垂直对齐，如bottom, top, center
+	表格内边距：控制表格内容与边框的距离，为td和th元素设置padding属性
+	表格颜色：可设置td,th的文本颜色及所有的背景颜色
+	更多属性参见W3school
+CSS轮廓(outline)：在元素周围划线，位于边框边缘外围，起到突出元素的作用
+	outline-style: 设置轮廓样式，有none(default), dotted, dashed, solid, double, etc
+	outline-color：设置轮廓颜色（必须在outline-style之后）
+	outline-width: 社会轮廓线条宽度，有medium(default), thin, thick, length（即使用一个具体长度值）
+
+=================================CSS框模型=====================================
+CSS框模型(Box Model)规定元素框处理元素内容(width, height)、内边距(padding，或填充)、边框(border)和外边距(margin，或空白边)的方式。
+背景应用于有内容，内边框和边框组成的区域，外边距区域默认透明
+内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边。
+外边距可以是负值，而且在很多情况下都要使用负值的外边距。
+CSS内边距：可按上、右、下、左顺序同时设置内边距：h1{padding: 10px 0.5em 2ex 30%;}
+	也可使用4个单独属性：padding-top-left-right-bottom
+	如果是百分比值，则是相对于父元素的width值而言，上下左右都是width（如h1的父元素可以是一个<div>）
+CSS边框：可以应用于任何元素
+	边框与背景：边框绘制于元素的背景之上，即元素背景是内容、内边距和边框的背景
+	边框样式：border-style。跟轮廓样式一样。可定义单边样式：border-top-right-bottom-left-style
+	边框宽度：border-width。同样有单边宽度。可使用值复制。必须先有border-style, 才能起作用
+	边框颜色：border-color。同样有单边宽度。可使用值复制。默认边框颜色与元素颜色相同。若没有元素，则与父元素相同
+	border-top-left-right-bottom: 将边框某一个方向上的所有属性设置到一个声明中，会覆盖border-style
+CSS外边距：与上面的内边距性质一致
+	有些元素（如段落）会自动换行是因为浏览器预先为其设置了一个外边距，一般情况margin默认值为0
+	值复制：口诀：缺左用右，缺下右用上。或：缺4用2，缺2,3用1
+	单边外边距属性：即margin-top-left-right-bottom
+CSS外边距合并：当两个垂直（如段落的行距）外边距相遇时，它们将合并成一个外边距，合并后高度等于两个中的较大者
+	当一个元素包含在另一个元素中时，（假设没有内边距或边框把外边距分隔开），它们的上和/或下外边距也会发生合并
+	外边距还可以和自身合并：一个空元素有外边距，无内边距和边框，则其上下外边距就会合并
+	只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并。
+
+===============================CSS定位====================================
+CSS定位(Positioning)概述:
+	允许定义元素框相对于其正常位置应该出现的位置，或者相对于父元素、另一个元素甚至浏览器窗口本身的位置
+	一切皆为框：div, h1, p 等为块级元素，即“块框”；span, strong 等为“行内元素”，即“行内框”
+		使用display属性改变框的类型，例如，通过将display=block，可以让“行内框”表现得像“块框”一样；
+			若设为none，则元素没有框，这样元素就不会显示
+	CSS定位机制：普通流、浮动和绝对定位
+		除非专门指定，否则所有框都在普通流中定位，即普通流中的元素位置由元素在 (X)HTML文档中的位置决定
+		由一行形成的水平框成为行框(Line Box)，行框的高度总是能容纳它所包含的所有行内框
+	CCS position属性：选择元素定位类型（会影响元素框生成的方式），属性值：
+		static：元素框正常生成
+		relative：相对定位，使元素相对于其原始位置移动
+		absolute：绝对定位，元素框从文档流中删除，相对于包含块（另一个元素或初始包含块）定位。定位后会生成一个块级框，不管原来在正常流中是何种框
+		fixed：固定定位，类似于将position设置为absolute，不过其包含块是视窗本身
+		应用举例：img{position: fixed; bottom: 10px;}
+		当元素内容太多超出设定的width或height值时，使用overflow属性来嵌入滚动条，属性值：
+			scroll：无论是否超出，总是有滚动条
+			auto：超出有没超无
+		z-index：可将一个元素放置在另一元素之后，如一幅图片和文字。默认值为0，当为-1时，就是在另一元素之后，1则是在前
+CSS浮动：浮动的框可以向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止
+	通过float属性设置一个元素为浮动的框。浮动的元素会生成一个块级框。属性值有left, right, none和inherit
+	使用浮动可以将两个段落并排放置，而不会自动换行
+	clear属性：规定元素那一侧不允许有浮动元素。可选left, right, both, none, inherit
+		有先后顺序，即若已有一个浮动元素在右边，一个新的清除右边的浮动元素可以放在第一个的左边
+	
+==============================CSS选择器===============================
+元素选择器：甚至可将<html>作为选择器
+CSS伪类(pseudo-class)：用于向某些选择器添加特殊效果
+	语法：selector:paeudo-class {property:value}
+	可和类搭配使用：selector.class:paeudo-class {property:value}
+	锚伪类：链接的不同状态构成的类
+	:first-child伪类：用于选择元素的第一个子元素，如：
+		p:first-child：若某个<p>元素作为另一个元素的第一个子元素，则这个p被选中
+		扩展：p>i:first-child: 选择<p>的第一个<i>子元素
+	:lang伪类：为不同的语言定义特殊的规则，如为属性值为no的q元素定义引号类型：
+		q:lang(no) {quotes: "#" "#";}
+		这个语法挺复杂，用括号表示lang的属性值
+	:focus伪类：在元素获得焦点时向元素添加特殊样式，应用于所有有焦点的元素（无具体定义）
+		a:focus就是相当于a:active
+CSS伪元素(pseudo-elements): 用于向某些选择器设置特殊效果
+	语法：selector:pseudo-element {property:value;}
+	也可和类配合使用：selector.class:pseudo-element {property:value;}
+	:first-line伪元素：为文本的首行设置特殊样式
+		只能用于块级元素
+	:first-letter伪元素：用于向文本的首字母设置特殊样式
+		同样只能用于块级元素
+	:before伪元素：在某个元素的前面插入新内容，使用 content 属性，如在每个<h1>前插入一幅图：
+		h1:before {content:url(logo.gif);}
+		注：若插入文字需加引号。切记切记
+	:after伪元素，与:before相对应
+		这两个元素意义：可以在每隔一元素前添加一些内容
+
+==========================CSS高级===========================
+CSS对齐：
+	对齐块对齐：即块元素在其前后会换行
+	使用margin来水平对齐：将margin-left和margin-right都设为auto
+		当然，直接margin:auto 这么设置也可以
+	使用position属性来进行左右对齐
+	使用float属性对齐
+CSS尺寸(Dimension)属性允许控制元素的高度和宽度及增加行间距
+	line-height属性设置行间距（不允许使用负值），可用normal, 一个数字，长度单位和百分比
+	什么max-height, max-width, min-height, min-width不知道有啥用，直接用height和width不行？？
+CSS分类：相关属性：
+	display: 常见值：
+		inline：将元素显示为内联元素，这样两个<p>可以同行
+		block：将元素显示为块级元素，此元素前后换行
+		none：不显示该元素
+	cursor：规定当鼠标放置与该元素上时鼠标的形状。许多种类型
+	visibility：设置元素是可见还是不可见，有visible（默认），hidden
+		collapse：应用于表格时删除一行或一列，与hidden用于表格时的区别是hidden会留一个空框。用于其他元素则和hidden一样
+CSS导航栏：
+	导航栏=链接列表（<ul> and <li>）
+	为<a>元素使用display:block属性，时整个链接区域（而不只是文字）都可点击
+CSS图片库：是有这个神招的
+CSS图片透明度：对<img>元素使用opacity属性改变图片的透明度，值取0.0-1.0，值越小越透明
+	<img>也有伪类hover？img:hover{opacity:1.0;}当鼠标位于图片上时图片不透明
+	一幅图片上出现透明文本框？也是可以的
+CSS媒介类型(Media Types)：同一份HTML文档对于不同的媒介类型，应用不同的样式
+	@media规则：
+		@media screen{p{font-size:14px;}}
+		多个规则组合时：@media screen,print{p{font-size:14px;}}
+	具体媒介类型查看http://www.w3school.com.cn/css/css_mediatypes.asp
+
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
